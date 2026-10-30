@@ -1,51 +1,124 @@
-# WhatsApp Message Repeater / Desktop Auto-Typer
+# 🚀 WhatsApp Message Repeater / Desktop Auto-Typer
 
-A lightweight, Python-based desktop automation tool built using `pyautogui` and `time` to automatically type and send repetitive messages to WhatsApp (desktop app or WhatsApp Web).
+[![Python Version](https://img.shields.io/badge/python-3.8%2B-blue.svg)](https://www.python.org/)
+[![Library](https://img.shields.io/badge/automation-PyAutoGUI-brightgreen.svg)](https://pyautogui.readthedocs.io/)
+[![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey.svg)]()
 
----
-
-## Features
-
-- **Countdown Timer**: Gives you 5 seconds (configurable) to switch to WhatsApp and focus on the message input box.
-- **Easy Configuration**:
-  - Direct modification via variables at the top of [`main.py`](file:///c:/Users/12sit/Documents/MessegeRepater/main.py)
-  - Interactive terminal prompt on startup (press Enter for defaults or customize on the fly).
-- **Keystroke Simulation**: Types each message via `pyautogui.write()` and sends it with `pyautogui.press('enter')`.
-- **Progress Tracking**: Real-time console status (`Sent message X of Y`) and overall time summary.
-- **Safety Fail-Safes**:
-  - **Screen-corner failsafe**: Move your mouse cursor immediately to any corner of the screen to abort.
-  - **Ctrl+C**: Gracefully stops the script from the terminal.
+A lightweight, automated desktop messaging tool written in Python. It simulates keystrokes using `pyautogui` to repeatedly send custom messages via **WhatsApp Desktop**, **WhatsApp Web**, or any chat interface.
 
 ---
 
-## Quick Start
+## 🌟 Key Features
 
-### 1. Activate the Virtual Environment (Optional if running via `.venv\Scripts\python`)
-In PowerShell:
+- **⏱️ Configurable Countdown Timer**: Gives you a 5-second countdown (configurable) to switch to your WhatsApp window and focus on the message box before typing begins.
+- **⚙️ Interactive CLI Prompts**: Choose default settings with one keypress (Enter) or dynamically set custom messages, repeat counts, and delays directly in the terminal.
+- **⌨️ Realistic Keystroke Simulation**: Simulates typing keystroke-by-keystroke with adjustable intervals and sends via simulated `Enter` key.
+- **📊 Real-Time Console Progress**: Live feedback displaying `Sent message X of Y` and total execution time summary upon completion.
+- **🛡️ Dual Safety Fail-Safes**:
+  - **Screen-Corner Fail-Safe**: Move your mouse pointer to any of the 4 screen corners to trigger an instant emergency stop.
+  - **Terminal Interruption**: Stop execution anytime cleanly by pressing `Ctrl + C`.
+
+---
+
+## 📋 Prerequisites
+
+- **Python 3.8+** installed on your machine.
+- WhatsApp Desktop application or WhatsApp Web open in a browser.
+
+---
+
+## 🛠️ Installation & Setup
+
+### 1. Clone the Repository
+```bash
+git clone https://github.com/sithumdevx/WhatsApp-Auto-Spammer-Python-script.git
+cd WhatsApp-Auto-Spammer-Python-script
+```
+
+### 2. Create and Activate Virtual Environment
+
+**On Windows (PowerShell):**
 ```powershell
+python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 ```
 
-### 2. Run the Script
-Using the project's virtual environment:
-```powershell
-.\.venv\Scripts\python.exe main.py
-```
-Or directly if the environment is activated:
-```powershell
-python main.py
+> **Note:** If you get a script execution policy error in PowerShell, run:
+> ```powershell
+> Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+> ```
+
+**On macOS / Linux:**
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
 ```
 
-### 3. Usage Steps
-1. Run the script.
-2. Select whether to use default settings or input custom text/count/delay.
-3. During the countdown, quickly switch to your WhatsApp window and click inside the chat message box.
-4. Let the tool type and send messages automatically.
+### 3. Install Dependencies
+```bash
+pip install -r requirements.txt
+```
 
 ---
 
-## Safety & Emergency Stop
+## 🚀 How to Use
 
-If you ever need to stop sending immediately:
-- **Mouse Failsafe**: Quickly slam your mouse cursor into any corner of the screen.
-- **Terminal Failsafe**: Return to the terminal and press `Ctrl + C`.
+### 1. Run the Script
+With your virtual environment activated:
+```bash
+python main.py
+```
+Or directly using the virtual environment interpreter on Windows:
+```powershell
+.\.venv\Scripts\python.exe main.py
+```
+
+### 2. Configure Your Session
+When prompted:
+```text
+============================================================
+      WHATSAPP MESSAGE REPEATER / AUTO-TYPER TOOL
+============================================================
+Current Configuration:
+ - Message       : "Mama Oyata adarei ne menike ❤️"
+ - Repeat Count  : 500
+ - Delay (sec)   : 0.5s
+ - Countdown     : 5s
+============================================================
+Use default settings? [Y/n] (Press Enter for Yes):
+```
+- **Press Enter** (or type `y`) to accept defaults.
+- **Type `n`** to enter a custom message text, repeat count, delay (seconds), and countdown.
+
+### 3. Switch to WhatsApp
+1. As soon as the timer begins (`Starting in 5 second(s)...`), click on your WhatsApp chat window.
+2. Ensure the cursor is active inside the text input box.
+3. Keep hands off the keyboard and mouse while the script is typing.
+
+---
+
+## ⚙️ Configuration Variables
+
+You can also customize the default variables permanently inside [`main.py`](file:///c:/Users/12sit/Documents/MessegeRepater/main.py):
+
+| Variable | Default Value | Description |
+| :--- | :--- | :--- |
+| `DEFAULT_MESSAGE` | `"Mama Oyata adarei ne menike ❤️"` | Default text string to be typed and sent. |
+| `DEFAULT_REPEAT_COUNT` | `500` | Number of times the message will be sent. |
+| `DEFAULT_DELAY` | `0.5` | Delay in seconds between successive messages. |
+| `DEFAULT_COUNTDOWN` | `5` | Buffer countdown in seconds before sending starts. |
+| `TYPING_INTERVAL` | `0.01` | Delay between each character typed. |
+
+---
+
+## 🛑 Emergency Stop & Safety
+
+If you need to halt the script immediately at any point:
+1. **Mouse Slam (Failsafe)**: Rapidly move your mouse cursor to **any corner of your screen** (`(0, 0)`, etc.). PyAutoGUI will trigger a `FailSafeException` and instantly abort.
+2. **Terminal Break**: Focus back into the terminal and press `Ctrl + C`.
+
+---
+
+## ⚠️ Disclaimer & Responsible Use
+
+> **Notice:** This project is intended for educational, testing, and personal productivity purposes only. Please use this tool responsibly and respect WhatsApp's [Terms of Service](https://www.whatsapp.com/legal/terms-of-service). Automated repetitive messaging / spamming can lead to temporary or permanent bans of your WhatsApp account.
