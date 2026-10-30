@@ -17,7 +17,7 @@ import pyautogui
 # CONFIGURATION SETTINGS
 # Modify these default values or use the interactive prompt when running.
 # ==============================================================================
-DEFAULT_MESSAGE = "Mama Oyata adarei ne menike ❤️"  # The message text to send
+DEFAULT_MESSAGE = "Type the Messege If you want to send"  # The message text to send
 DEFAULT_REPEAT_COUNT = 500                               # Total number of times to repeat
 DEFAULT_DELAY = 0.5                                     # Delay in seconds between messages
 DEFAULT_COUNTDOWN = 5                                   # Countdown time in seconds to switch to WhatsApp
