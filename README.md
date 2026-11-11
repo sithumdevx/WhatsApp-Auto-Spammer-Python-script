@@ -12,7 +12,7 @@ A lightweight, automated desktop messaging tool written in Python. It simulates 
 
 - **⏱️ Configurable Countdown Timer**: Gives you a 5-second countdown (configurable) to switch to your WhatsApp window and focus on the message box before typing begins.
 - **⚙️ Interactive CLI Prompts**: Choose default settings with one keypress (Enter) or dynamically set custom messages, repeat counts, and delays directly in the terminal.
-- **⌨️ Realistic Keystroke Simulation**: Simulates typing keystroke-by-keystroke with adjustable intervals and sends via simulated `Enter` key.
+- **😍 Full Emoji & Unicode Support**: Seamlessly sends emojis (😘, ❤️, 🔥, etc.), Sinhala/Tamil fonts, and multi-language characters without dropping or skipping text using clipboard pasting (`pyperclip`).
 - **📊 Real-Time Console Progress**: Live feedback displaying `Sent message X of Y` and total execution time summary upon completion.
 - **🛡️ Dual Safety Fail-Safes**:
   - **Screen-Corner Fail-Safe**: Move your mouse pointer to any of the 4 screen corners to trigger an instant emergency stop.
@@ -80,7 +80,7 @@ When prompted:
       WHATSAPP MESSAGE REPEATER / AUTO-TYPER TOOL
 ============================================================
 Current Configuration:
- - Message       : "Mama Oyata adarei ne menike ❤️"
+ - Message       : "The message text to send"
  - Repeat Count  : 500
  - Delay (sec)   : 0.5s
  - Countdown     : 5s

@@ -9,17 +9,19 @@ Safety Features:
 - Ctrl+C handling: Gracefully stops the script when interrupted from the terminal.
 """
 
+import platform
 import sys
 import time
 import pyautogui
+import pyperclip
 
 # ==============================================================================
 # CONFIGURATION SETTINGS
 # Modify these default values or use the interactive prompt when running.
 # ==============================================================================
-DEFAULT_MESSAGE = "Type the Messege If you want to send"  # The message text to send
-DEFAULT_REPEAT_COUNT = 500                               # Total number of times to repeat
-DEFAULT_DELAY = 0.5                                     # Delay in seconds between messages
+DEFAULT_MESSAGE = "The message text to send"  # The message text to send
+DEFAULT_REPEAT_COUNT = 50                               # Total number of times to repeat
+DEFAULT_DELAY = 0.1                                     # Delay in seconds between messages
 DEFAULT_COUNTDOWN = 5                                   # Countdown time in seconds to switch to WhatsApp
 TYPING_INTERVAL = 0.01                                  # Delay between keystrokes (prevents missed letters)
 
@@ -90,18 +92,26 @@ def countdown_timer(seconds: int):
 
 def send_messages(message: str, repeat_count: int, delay: float):
     """
-    Executes the loop to type and send messages using pyautogui.
+    Executes the loop to send messages using clipboard pasting and pyautogui.
+    Uses pyperclip to ensure full support for emojis (😘, ❤️), Unicode (සිංහල), and symbols.
     """
     print(f"[*] Target: Sending {repeat_count} message(s) with {delay}s delay between each.")
     print("-" * 60)
+
+    # Copy message to clipboard to support emojis, Sinhala, and all Unicode characters
+    pyperclip.copy(message)
+    paste_hotkey = ("command", "v") if platform.system() == "Darwin" else ("ctrl", "v")
 
     start_time = time.time()
     sent_count = 0
 
     try:
         for i in range(1, repeat_count + 1):
-            # Step 1: Type the message
-            pyautogui.write(message, interval=TYPING_INTERVAL)
+            # Step 1: Paste the message (preserves emojis and special characters)
+            pyautogui.hotkey(*paste_hotkey)
+
+            # Micro-buffer to let WhatsApp UI register the pasted text
+            time.sleep(0.03)
 
             # Step 2: Press 'enter' to send
             pyautogui.press("enter")
